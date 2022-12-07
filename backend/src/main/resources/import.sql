@@ -1,0 +1,2 @@
+INSERT INTO tb_mae (cpf, nome, data_nascimento, telefone, endereco, numero, bairro, complemento, uf, cep) VALUES ('56789012345', 'Kaline Santana Santos Guimarães', '1992-08-18', '73981153915', 'Rua Peroba', 69, 'Cacique', 'Casa', 'ES', '29932140');
+INSERT INTO tb_ficha_paciente (cpf_paciente, tipo_sanguineo, soro_positivo, hipertensao, diabetes, medicacao_controlada, peso, altura) VALUES ('56789012345', 'O+', 'NÃO', 'NÃO', 'NÃO', 'NÃO', 60.0, 1.58);
