@@ -40,10 +40,9 @@ public class MaeController {
         MaeDTO novaMaeDTO = maeService.cadastrarMae(maeDTO);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(maeDTO.getCpf()).toUri();
-        if (novaMaeDTO == null) {
-//            return ResponseEntity.status(HttpStatus.CONFLICT).body("CPF já cadastrado no sistema.");
-            throw new ResourceConflictPersistence("Conflito de chave primária.");
-        }
-        return ResponseEntity.status(HttpStatus.CREATED).body(novaMaeDTO);
+//        if (novaMaeDTO == null) {
+//            throw new ResourceConflictPersistence("Conflito de chave primária.");
+//        }
+        return ResponseEntity.created(uri).body(novaMaeDTO);
     }
 }

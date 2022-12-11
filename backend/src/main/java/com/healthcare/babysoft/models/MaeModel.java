@@ -2,7 +2,6 @@ package com.healthcare.babysoft.models;
 
 import com.healthcare.babysoft.dtos.FichaPacienteDTO;
 import com.healthcare.babysoft.dtos.MaeDTO;
-import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serial;

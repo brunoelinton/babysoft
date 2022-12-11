@@ -1,22 +1,20 @@
 package com.healthcare.babysoft.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-
 import javax.persistence.*;
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "TB_ESPECIALIDADE")
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class EspecialidadeModel implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
     private Integer especialidadeId;
+    @Column(unique = true)
     private String nome;
 
     public EspecialidadeModel() {

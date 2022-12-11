@@ -1,8 +1,6 @@
 package com.healthcare.babysoft.services;
 
 import com.healthcare.babysoft.dtos.FichaPacienteDTO;
-import com.healthcare.babysoft.dtos.MaeDTO;
-import com.healthcare.babysoft.enums.TipoSanguineo;
 import com.healthcare.babysoft.models.FichaPacienteModel;
 import com.healthcare.babysoft.models.MaeModel;
 import com.healthcare.babysoft.repositories.FichaPacienteRepository;
@@ -12,13 +10,9 @@ import com.healthcare.babysoft.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
 
-import javax.persistence.EntityExistsException;
 import java.util.Optional;
 
 @Service
