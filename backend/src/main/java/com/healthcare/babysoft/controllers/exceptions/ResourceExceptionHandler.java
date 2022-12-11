@@ -78,7 +78,7 @@ public class ResourceExceptionHandler {
         err.setStatus(status.value());
         err.setError("Conflito de chave primária");
         err.setMessage(e.getMessage());
-        err.setPath(request.getRequestURI() + "/" + e.getCpf());
+        err.setPath(request.getRequestURI());
         System.out.println(err.getPath());
         return ResponseEntity.status(status).body(err);
     }

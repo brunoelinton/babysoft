@@ -38,7 +38,7 @@ public class MaeService {
     public MaeDTO cadastrarMae(@Valid @RequestBody MaeDTO maeDTO) {
         Optional<MaeModel> maeModelOptional = maeRepository.findByCpf(maeDTO.getCpf());
         if(maeModelOptional.isPresent()) {
-            throw new ResourceConflictPersistence("Registro com CPF informado já presente no sistema.", maeDTO.getCpf());
+            throw new ResourceConflictPersistence("Registro com CPF informado já presente no sistema.");
         }
 
         MaeModel maeModel = new MaeModel();

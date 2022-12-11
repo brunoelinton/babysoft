@@ -7,12 +7,7 @@ public class ResourceConflictPersistence extends EntityExistsException {
     private static final long serialVersionUID = 1L;
 
     String cpf;
-    public ResourceConflictPersistence(String msg, String cpf) {
+    public ResourceConflictPersistence(String msg) {
         super(msg);
-        this.cpf = cpf;
-    }
-
-    public String getCpf() {
-        return cpf;
     }
 }

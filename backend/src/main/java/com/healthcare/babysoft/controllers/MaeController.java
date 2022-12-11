@@ -42,7 +42,7 @@ public class MaeController {
                 .buildAndExpand(maeDTO.getCpf()).toUri();
         if (novaMaeDTO == null) {
 //            return ResponseEntity.status(HttpStatus.CONFLICT).body("CPF já cadastrado no sistema.");
-            throw new ResourceConflictPersistence("Conflito de chave primária", maeDTO.getCpf());
+            throw new ResourceConflictPersistence("Conflito de chave primária.");
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(novaMaeDTO);
     }

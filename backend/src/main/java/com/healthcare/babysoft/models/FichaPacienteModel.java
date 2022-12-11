@@ -26,7 +26,6 @@ public class FichaPacienteModel implements Serializable {
     @Enumerated(EnumType.STRING)
     private MedicacaoControlada medicacaoControlada;
     @Column(precision = 2, scale = 2)
-    @Digits(integer = 10, fraction = 0)
     private Double peso;
     @Column(precision = 2, scale = 2)
     private Double altura;

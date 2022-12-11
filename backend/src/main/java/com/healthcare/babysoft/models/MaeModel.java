@@ -9,29 +9,40 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.Set;
 
-@Data
 @Entity
 @Table(name = "TB_MAE")
-@Inheritance(strategy = InheritanceType.JOINED)
 public class MaeModel implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
     private String cpf;
+    @Column(nullable = false, length = 50)
     private String nome;
+    @Column(nullable = false)
     private LocalDate dataNascimento;
+    @Column(nullable = false, length = 20)
     private String telefone;
+    @Column(nullable = false, length = 40)
     private String endereco;
+    @Column(nullable = false, length = 40)
     private String bairro;
+    @Column(nullable = false)
     private Integer numero;
+    @Column(nullable = false, length = 50)
     private String complemento;
+    @Column(nullable = false, length = 2)
     private String uf;
+    @Column(nullable = false, length = 8)
     private String cep;
 
     @OneToOne(mappedBy = "mae", cascade = CascadeType.ALL)
     private FichaPacienteModel fichaPacienteModel;
+
+    @OneToMany(mappedBy = "recemNascidoId.mae", fetch = FetchType.EAGER)
+    private Set<RecemNascidoModel> recemNascidos;
 
     public MaeModel() {
     }

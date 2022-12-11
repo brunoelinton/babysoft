@@ -38,7 +38,7 @@ public class FichaPacienteService {
         Optional<FichaPacienteModel> fichaPacienteModelOptional = fichaPacienteRepository.findByCpf(cpfPaciente);
 
         if (fichaPacienteModelOptional.isPresent()) {
-            throw new ResourceConflictPersistence("Ficha com CPF informado já presente no sistema.", cpfPaciente);
+            throw new ResourceConflictPersistence("Ficha com CPF informado já presente no sistema.");
         }
 
         Optional<MaeModel> obj = maeRepository.findByCpf(cpfPaciente);
