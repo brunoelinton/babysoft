@@ -38,7 +38,6 @@ public class EspecialidadeController {
         EspecialidadeDTO novaEspecialidadeDTO = especialidadeService.cadastrarEspecialidade(especialidadeDTO);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{especialidadeId}")
                 .buildAndExpand(novaEspecialidadeDTO.getEspecialidadeId()).toUri();
-        System.out.println(uri);
         return ResponseEntity.created(uri).body(novaEspecialidadeDTO);
     }
 }

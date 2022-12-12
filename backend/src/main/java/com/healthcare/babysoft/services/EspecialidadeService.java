@@ -22,13 +22,13 @@ public class EspecialidadeService {
     @Transactional(readOnly = true)
     public List<EspecialidadeDTO> buscarTodasEspecialidades() {
         List<EspecialidadeModel> lista = especialidadeRepository.findAll();
-        return lista.stream().map(especialidade -> new EspecialidadeDTO(especialidade)).collect(Collectors.toList());
+        return lista.stream().map(EspecialidadeDTO::new).collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)
     public EspecialidadeDTO buscarUmaEspecialiade(Integer especialidadeId) {
         Optional<EspecialidadeModel> obj = especialidadeRepository.findById(especialidadeId);
-        EspecialidadeModel especialidadeModel = obj.orElseThrow(() -> new ResourceNotFoundException("Especialidade não encontrada no sistema."));
+        EspecialidadeModel especialidadeModel = obj.orElseThrow(() -> new ResourceNotFoundException("Especialidade não cadastrada no sistema."));
         return new EspecialidadeDTO(especialidadeModel);
     }
 

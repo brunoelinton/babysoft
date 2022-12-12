@@ -4,3 +4,6 @@ INSERT INTO tb_recem_nascido (nome, data_nascimento, sexo, peso, altura, condica
 INSERT INTO tb_especialidade (nome) VALUES ('Obstetra');
 INSERT INTO tb_especialidade (nome) VALUES ('Anestesista');
 INSERT INTO tb_especialidade (nome) VALUES ('Pediatra');
+INSERT INTO tb_funcionario (cpf, nome, email, senha, status) VALUES ('12345678901', 'Bruno Guimarães', 'bruno@gmail.com', '123456', 'ATIVO');
+INSERT INTO tb_funcionario (cpf, nome, email, senha, status) VALUES ('23456789012', 'João Silva', 'joao@gmail.com', '123456', 'ATIVO');
+INSERT INTO tb_funcionario (cpf, nome, email, senha, status) VALUES ('34567890123', 'Maria Souza', 'maria@gmail.com', '123456', 'ATIVO');

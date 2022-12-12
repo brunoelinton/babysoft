@@ -9,8 +9,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
+import java.net.URI;
 
 @RestController
 @RequestMapping("/recemNascidos")
@@ -32,10 +34,12 @@ public class RecemNascidoController {
         return ResponseEntity.status(HttpStatus.OK).body(recemNascidoDTO);
     }
 
-
     @PostMapping
     public ResponseEntity<Object> cadastrarRecemNascido(@Valid @RequestBody RecemNascidoDTO recemNascidoDTO) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(recemNascidoService.cadastrarRecemNascido(recemNascidoDTO));
+        RecemNascidoDTO novoRecemNascidoDTO = recemNascidoService.cadastrarRecemNascido(recemNascidoDTO);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{recemNascidoId}")
+                .buildAndExpand(novoRecemNascidoDTO.getRecemNascidoId()).toUri();
+        return ResponseEntity.created(uri).body(novoRecemNascidoDTO);
     }
 
 

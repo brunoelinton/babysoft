@@ -36,13 +36,10 @@ public class MaeController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> cadastrarMae(@Valid @RequestBody MaeDTO maeDTO) {
+    public ResponseEntity<MaeDTO> cadastrarMae(@Valid @RequestBody MaeDTO maeDTO) {
         MaeDTO novaMaeDTO = maeService.cadastrarMae(maeDTO);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(maeDTO.getCpf()).toUri();
-//        if (novaMaeDTO == null) {
-//            throw new ResourceConflictPersistence("Conflito de chave primária.");
-//        }
         return ResponseEntity.created(uri).body(novaMaeDTO);
     }
 }
