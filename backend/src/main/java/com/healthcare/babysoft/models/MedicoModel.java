@@ -6,13 +6,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-import java.io.Serial;
-import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "TB_MEDICO")
-@PrimaryKeyJoinColumn(name = "cpf")
+@PrimaryKeyJoinColumn(name = "cpf_funcionario")
 public class MedicoModel extends FuncionarioModel {
 
     @Column(unique = true)
