@@ -7,5 +7,5 @@ INSERT INTO tb_especialidade (nome) VALUES ('Pediatra');
 INSERT INTO tb_funcionario (cpf, nome, email, senha, status) VALUES ('12345678901', 'Bruno Guimarães', 'bruno@gmail.com', '123456', 'ATIVO');
 INSERT INTO tb_funcionario (cpf, nome, email, senha, status) VALUES ('23456789012', 'João Silva', 'joao@gmail.com', '123456', 'ATIVO');
 INSERT INTO tb_funcionario (cpf, nome, email, senha, status) VALUES ('34567890123', 'Maria Souza', 'maria@gmail.com', '123456', 'ATIVO');
-INSERT INTO tb_medico(cpf_funcionario, crm) VALUES ('12345678901', 'BA123456');
+INSERT INTO tb_medico(cpf_funcionario, crm, especialidade_id) VALUES ('12345678901', 'BA123456', 1);
 INSERT INTO tb_enfermeiro(cpf_funcionario, inscricao_coren) VALUES ('23456789012', 'BA123456T1');

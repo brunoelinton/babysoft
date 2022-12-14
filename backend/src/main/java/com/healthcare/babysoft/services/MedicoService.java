@@ -2,8 +2,10 @@ package com.healthcare.babysoft.services;
 
 import com.healthcare.babysoft.dtos.MedicoDTO;
 import com.healthcare.babysoft.enums.Status;
+import com.healthcare.babysoft.models.EspecialidadeModel;
 import com.healthcare.babysoft.models.FuncionarioModel;
 import com.healthcare.babysoft.models.MedicoModel;
+import com.healthcare.babysoft.repositories.EspecialidadeRepository;
 import com.healthcare.babysoft.repositories.FuncionarioRepository;
 import com.healthcare.babysoft.repositories.MedicoRepository;
 import com.healthcare.babysoft.services.exceptions.ResourceConflictPersistence;
@@ -25,6 +27,8 @@ public class MedicoService {
     @Autowired
     private MedicoRepository medicoRepository;
 
+    @Autowired
+    private EspecialidadeRepository especialidadeRepository;
 
     @Transactional(readOnly = true)
     public Page<MedicoDTO> buscarTodosMedicos(Pageable pageable) {
@@ -43,8 +47,14 @@ public class MedicoService {
     public MedicoDTO cadastrarMedico(MedicoDTO medicoDTO) {
         Optional<FuncionarioModel> objFuncionario = funcionarioRepository.findByCpf(medicoDTO.getCpf());
         if(objFuncionario.isPresent()) throw new ResourceConflictPersistence("Funcionário com o CPF informado já cadastrado no sistema");
-        Optional<MedicoModel> obj = medicoRepository.findByCrm(medicoDTO.getCrm());
-        if(obj.isPresent()) throw new ResourceConflictPersistence("Já existe médico cadastrado no sistema com o CRM informado.");
+
+        Optional<MedicoModel> objMedico = medicoRepository.findByCrm(medicoDTO.getCrm());
+        if(objMedico.isPresent()) throw new ResourceConflictPersistence("Já existe médico cadastrado no sistema com o CRM informado.");
+
+        Optional<EspecialidadeModel> objEspecialidade = especialidadeRepository.findByNome(medicoDTO.getEspecialidade());
+        if(objEspecialidade.isEmpty()) throw new ResourceNotFoundException("Especialidade não encontrada no sistema.");
+
+        EspecialidadeModel especialidadeModel = objEspecialidade.get();
         MedicoModel medicoModel = new MedicoModel();
         medicoModel.setCpf(medicoDTO.getCpf());
         medicoModel.setNome(medicoDTO.getNome());
@@ -52,6 +62,7 @@ public class MedicoService {
         medicoModel.setSenha(medicoDTO.getSenha());
         medicoModel.setStatus(Status.ATIVO);
         medicoModel.setCrm(medicoDTO.getCrm());
+        medicoModel.setEspecialidade(especialidadeModel);
         return new MedicoDTO(medicoRepository.save(medicoModel));
     }
 }

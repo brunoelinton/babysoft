@@ -11,18 +11,18 @@ public class EspecialidadeDTO implements Serializable {
     private Integer especialidadeId;
 
     @NotBlank
-    private String nome;
+    private String especialidadeNome;
 
     public EspecialidadeDTO() {}
 
-    public EspecialidadeDTO(Integer especialidadeId, String nome) {
+    public EspecialidadeDTO(Integer especialidadeId, String especialidadeNome) {
         this.especialidadeId = especialidadeId;
-        this.nome = nome;
+        this.especialidadeNome = especialidadeNome;
     }
 
     public EspecialidadeDTO(EspecialidadeModel especialidadeModel) {
         this.especialidadeId = especialidadeModel.getEspecialidadeId();
-        this.nome = especialidadeModel.getNome();
+        this.especialidadeNome = especialidadeModel.getNome();
     }
 
     public Integer getEspecialidadeId() {
@@ -33,11 +33,11 @@ public class EspecialidadeDTO implements Serializable {
         this.especialidadeId = especialidadeId;
     }
 
-    public String getNome() {
-        return nome;
+    public String getEspecialidadeNome() {
+        return especialidadeNome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setEspecialidadeNome(String especialidadeNome) {
+        this.especialidadeNome = especialidadeNome;
     }
 }

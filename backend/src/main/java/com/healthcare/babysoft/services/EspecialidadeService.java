@@ -22,7 +22,7 @@ public class EspecialidadeService {
     @Transactional(readOnly = true)
     public List<EspecialidadeDTO> buscarTodasEspecialidades() {
         List<EspecialidadeModel> lista = especialidadeRepository.findAll();
-        return lista.stream().map(EspecialidadeDTO::new).collect(Collectors.toList());
+        return lista.stream().map(especialidade -> new EspecialidadeDTO(especialidade)).collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)
@@ -34,12 +34,12 @@ public class EspecialidadeService {
 
     @Transactional
     public EspecialidadeDTO cadastrarEspecialidade(EspecialidadeDTO especialidadeDTO) {
-        Optional<EspecialidadeModel> obj = especialidadeRepository.findByNome(especialidadeDTO.getNome());
+        Optional<EspecialidadeModel> obj = especialidadeRepository.findByNome(especialidadeDTO.getEspecialidadeNome());
 
         if(obj.isPresent()) throw new ResourceConflictPersistence("Especialidade já cadastrada no sistema.");
 
         EspecialidadeModel especialidadeModel = new EspecialidadeModel();
-        especialidadeModel.setNome(especialidadeDTO.getNome());
+        especialidadeModel.setNome(especialidadeDTO.getEspecialidadeNome());
         return new EspecialidadeDTO(especialidadeRepository.save(especialidadeModel));
     }
 }

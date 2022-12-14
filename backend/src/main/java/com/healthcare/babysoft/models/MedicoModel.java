@@ -2,10 +2,7 @@ package com.healthcare.babysoft.models;
 
 import com.healthcare.babysoft.enums.Status;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -16,13 +13,17 @@ public class MedicoModel extends FuncionarioModel {
     @Column(unique = true)
     private String crm;
 
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "especialidade_id", nullable = false)
+    private EspecialidadeModel especialidade;
+
     public MedicoModel() {}
 
     public MedicoModel(String crm) {
         this.crm = crm;
     }
 
-    public MedicoModel(String cpf, String nome, String email, String senha, Status status, String crm) {
+    public MedicoModel(String cpf, String nome, String email, String senha, Status status, String crm, EspecialidadeModel especialidade) {
         super(cpf, nome, email, senha, status);
         this.crm = crm;
     }
@@ -34,6 +35,12 @@ public class MedicoModel extends FuncionarioModel {
     public void setCrm(String crm) {
         this.crm = crm;
     }
+
+    public EspecialidadeModel getEspecialidade() {
+        return especialidade;
+    }
+
+    public void setEspecialidade(EspecialidadeModel especialidade) { this.especialidade = especialidade; }
 
     @Override
     public boolean equals(Object o) {
