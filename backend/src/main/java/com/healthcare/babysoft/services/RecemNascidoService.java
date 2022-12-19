@@ -85,6 +85,7 @@ public class RecemNascidoService {
         recemNascidoModel.setAltura(recemNascidoDTO.getAltura());
         recemNascidoModel.setCondicao(recemNascidoDTO.getCondicao());
         recemNascidoModel.setCpfPai(recemNascidoDTO.getCpfPai());
+        recemNascidoModel.getRecemNascidoId().getMaeModel();
     }
 
 }

@@ -15,7 +15,6 @@ public class RecemNascidoPK implements Serializable {
     @JoinColumn(name = "cpf_mae", nullable = false)
     private MaeModel mae;
 
-    // @Column(nullable = false)
     private LocalDateTime dataNascimento;
 
     public RecemNascidoPK() {}

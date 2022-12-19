@@ -9,3 +9,5 @@ INSERT INTO tb_funcionario (cpf, nome, email, senha, status) VALUES ('2345678901
 INSERT INTO tb_funcionario (cpf, nome, email, senha, status) VALUES ('34567890123', 'Maria Souza', 'maria@gmail.com', '123456', 'ATIVO');
 INSERT INTO tb_medico(cpf_funcionario, crm, especialidade_id) VALUES ('12345678901', 'BA123456', 1);
 INSERT INTO tb_enfermeiro(cpf_funcionario, inscricao_coren) VALUES ('23456789012', 'BA123456T1');
+INSERT INTO tb_parto(cpf_mae, data_parto, tipo_parto, parto_risco, multifetal, observacao) VALUES ('56789012345', '2023-03-20 10:20:30', 'NORMAL', 'NÃO', 'NÃO', 'Parto sem complicações');
+

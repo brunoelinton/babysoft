@@ -38,7 +38,7 @@ public class MaeController {
     @PostMapping
     public ResponseEntity<MaeDTO> cadastrarMae(@Valid @RequestBody MaeDTO maeDTO) {
         MaeDTO novaMaeDTO = maeService.cadastrarMae(maeDTO);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{cpf}")
                 .buildAndExpand(maeDTO.getCpf()).toUri();
         return ResponseEntity.created(uri).body(novaMaeDTO);
     }

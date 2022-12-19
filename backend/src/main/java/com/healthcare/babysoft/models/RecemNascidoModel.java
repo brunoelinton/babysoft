@@ -30,6 +30,9 @@ public class RecemNascidoModel implements Serializable {
     @Column(nullable = false)
     private Condicao condicao;
 
+    @OneToOne(mappedBy = "recemNascido", cascade = CascadeType.ALL)
+    private PartoModel parto;
+
     public RecemNascidoModel(){}
 
     public RecemNascidoModel(MaeModel maeModel, String nome, String cpfPai, LocalDateTime dataNascimento, Character sexo, Double peso, Double altura, Condicao condicao) {
