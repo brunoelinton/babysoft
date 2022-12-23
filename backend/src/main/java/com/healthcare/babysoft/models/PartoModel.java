@@ -27,6 +27,9 @@ public class PartoModel implements Serializable {
     // @Column(unique = true)
     private RecemNascidoModel recemNascido;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "equipe_parto_id")
+    private EquipePartoModel equipeParto;
 /*----------------------------------------------------
     @EmbeddedId
     private RecemNascidoPK recemNascidoPK;
@@ -72,13 +75,14 @@ public class PartoModel implements Serializable {
 
     public PartoModel() {}
 
-    public PartoModel(Long partoId, RecemNascidoModel recemNascido, TipoParto tipoParto, Multifetal multifetal, PartoRisco partoRisco, String observacao) {
+    public PartoModel(Long partoId, RecemNascidoModel recemNascido, TipoParto tipoParto, Multifetal multifetal, PartoRisco partoRisco, String observacao, EquipePartoModel equipeParto) {
         this.partoId = partoId;
         this.recemNascido = recemNascido;
         this.tipoParto = tipoParto;
         this.multifetal = multifetal;
         this.partoRisco = partoRisco;
         this.observacao = observacao;
+        this.equipeParto = equipeParto;
     }
 
     public Long getPartoId() {
@@ -127,6 +131,14 @@ public class PartoModel implements Serializable {
 
     public void setObservacao(String observacao) {
         this.observacao = observacao;
+    }
+
+    public EquipePartoModel getEquipeParto() {
+        return equipeParto;
+    }
+
+    public void setEquipeParto(EquipePartoModel equipeParto) {
+        this.equipeParto = equipeParto;
     }
 
     @Override

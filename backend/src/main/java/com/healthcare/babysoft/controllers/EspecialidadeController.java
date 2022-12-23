@@ -3,8 +3,6 @@ package com.healthcare.babysoft.controllers;
 import com.healthcare.babysoft.dtos.EspecialidadeDTO;
 import com.healthcare.babysoft.services.EspecialidadeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

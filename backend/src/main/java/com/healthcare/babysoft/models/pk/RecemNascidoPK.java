@@ -18,6 +18,7 @@ public class RecemNascidoPK implements Serializable {
     private LocalDateTime dataNascimento;
 
     public RecemNascidoPK() {}
+
     public RecemNascidoPK(MaeModel maeModel, LocalDateTime dataNascimento) {
         this.mae = maeModel;
         this.dataNascimento = dataNascimento;

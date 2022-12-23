@@ -1,9 +1,11 @@
 package com.healthcare.babysoft.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.healthcare.babysoft.enums.Multifetal;
 import com.healthcare.babysoft.enums.PartoRisco;
 import com.healthcare.babysoft.enums.TipoParto;
+import com.healthcare.babysoft.models.EquipePartoModel;
 import com.healthcare.babysoft.models.PartoModel;
 
 import javax.validation.constraints.NotBlank;
@@ -31,9 +33,12 @@ public class PartoDTO implements Serializable {
     @NotBlank
     private String observacao;
 
+    @NotNull
+    private EquipePartoDTO equipeParto;
+
     public PartoDTO() {}
 
-    public PartoDTO(Long partoId, LocalDateTime dataParto, MaeDTO mae, RecemNascidoDTO recemNascido, TipoParto tipoParto, PartoRisco partoRisco, Multifetal multifetal, String observacao) {
+    public PartoDTO(Long partoId, LocalDateTime dataParto, MaeDTO mae, RecemNascidoDTO recemNascido, TipoParto tipoParto, PartoRisco partoRisco, Multifetal multifetal, String observacao, EquipePartoDTO equipeParto) {
         this.partoId = partoId;
         this.dataParto = dataParto;
         this.mae = mae;
@@ -42,6 +47,7 @@ public class PartoDTO implements Serializable {
         this.partoRisco = partoRisco;
         this.multifetal = multifetal;
         this.observacao = observacao;
+        this.equipeParto = equipeParto;
     }
 
     public PartoDTO(PartoModel partoModel) {
@@ -53,6 +59,11 @@ public class PartoDTO implements Serializable {
         partoRisco = partoModel.getPartoRisco();
         multifetal = partoModel.getMultifetal();
         observacao = partoModel.getObservacao();
+        equipeParto = new EquipePartoDTO(partoModel.getEquipeParto());
+
+        // equipeParto.getEquipeMedica().forEach();
+        // equipeParto.getEquipeMedica().add(new EquipeMedicaDTO());
+
     }
 
     public Long getPartoId() {
@@ -117,5 +128,13 @@ public class PartoDTO implements Serializable {
 
     public void setObservacao(String observacao) {
         this.observacao = observacao;
+    }
+
+    public EquipePartoDTO getEquipeParto() {
+        return equipeParto;
+    }
+
+    public void setEquipeParto(EquipePartoDTO equipeParto) {
+        this.equipeParto = equipeParto;
     }
 }

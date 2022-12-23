@@ -3,6 +3,7 @@ package com.healthcare.babysoft.dtos;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import com.healthcare.babysoft.enums.Condicao;
+import com.healthcare.babysoft.models.MaeModel;
 import com.healthcare.babysoft.models.RecemNascidoModel;
 import com.healthcare.babysoft.utils.FactoryId;
 
@@ -42,8 +43,9 @@ public class RecemNascidoDTO implements Serializable {
 
     public RecemNascidoDTO() {}
 
-    public RecemNascidoDTO(String nome, String cpfPai, LocalDateTime dataNascimento, Character sexo, Double peso, Double altura, Condicao condicao, String nomeMae) {
-        this.recemNascidoId = nomeMae;
+    public RecemNascidoDTO(String nome, String cpfPai, LocalDateTime dataNascimento, Character sexo, Double peso, Double altura, Condicao condicao, MaeModel mae) {
+        String data = FactoryId.buildId(dataNascimento);
+        this.recemNascidoId = mae.getCpf() + data;
         this.nome = nome;
         this.cpfPai = cpfPai;
         this.dataNascimento = dataNascimento;
@@ -51,7 +53,7 @@ public class RecemNascidoDTO implements Serializable {
         this.peso = peso;
         this.altura = altura;
         this.condicao = condicao;
-        this.nomeMae = nomeMae;
+        this.nomeMae = mae.getNome();
     }
 
     public RecemNascidoDTO(RecemNascidoModel recemNascidoModel) {

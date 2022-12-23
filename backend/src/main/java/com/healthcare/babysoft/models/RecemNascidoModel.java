@@ -7,6 +7,7 @@ import com.healthcare.babysoft.models.pk.RecemNascidoPK;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Table(name = "TB_RECEM_NASCIDO")
@@ -117,5 +118,18 @@ public class RecemNascidoModel implements Serializable {
 
     public void setRecemNascidoId(RecemNascidoPK recemNascidoId) {
         this.recemNascidoId = recemNascidoId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RecemNascidoModel that = (RecemNascidoModel) o;
+        return recemNascidoId.equals(that.recemNascidoId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(recemNascidoId);
     }
 }
