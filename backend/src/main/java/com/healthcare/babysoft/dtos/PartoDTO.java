@@ -60,10 +60,6 @@ public class PartoDTO implements Serializable {
         multifetal = partoModel.getMultifetal();
         observacao = partoModel.getObservacao();
         equipeParto = new EquipePartoDTO(partoModel.getEquipeParto());
-
-        // equipeParto.getEquipeMedica().forEach();
-        // equipeParto.getEquipeMedica().add(new EquipeMedicaDTO());
-
     }
 
     public Long getPartoId() {

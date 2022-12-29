@@ -45,8 +45,13 @@ public class MedicoService {
 
     @Transactional
     public MedicoDTO cadastrarMedico(MedicoDTO medicoDTO) {
-        Optional<FuncionarioModel> objFuncionario = funcionarioRepository.findByCpf(medicoDTO.getCpf());
+        Optional<FuncionarioModel> objFuncionario;
+
+        objFuncionario = funcionarioRepository.findByCpf(medicoDTO.getCpf());
         if(objFuncionario.isPresent()) throw new ResourceConflictPersistence("Funcionário com o CPF informado já cadastrado no sistema");
+
+        objFuncionario = funcionarioRepository.findByEmail(medicoDTO.getEmail());
+        if(objFuncionario.isPresent()) throw new ResourceConflictPersistence("E-mail em uso.");
 
         Optional<MedicoModel> objMedico = medicoRepository.findByCrm(medicoDTO.getCrm());
         if(objMedico.isPresent()) throw new ResourceConflictPersistence("Já existe médico cadastrado no sistema com o CRM informado.");

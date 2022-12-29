@@ -1,5 +1,7 @@
 package com.healthcare.babysoft.dtos;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonView;
 import com.healthcare.babysoft.enums.Status;
 import com.healthcare.babysoft.models.FuncionarioModel;
 
@@ -13,6 +15,7 @@ public class FuncionarioDTO implements Serializable {
     private String cpf;
     private String nome;
     private String email;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String senha;
     private Status status;
 
@@ -30,7 +33,7 @@ public class FuncionarioDTO implements Serializable {
         cpf = funcionarioModel.getCpf();
         nome = funcionarioModel.getNome();
         email = funcionarioModel.getEmail();
-        senha = funcionarioModel.getSenha();
+        // senha = funcionarioModel.getSenha();
         status = funcionarioModel.getStatus();
     }
 

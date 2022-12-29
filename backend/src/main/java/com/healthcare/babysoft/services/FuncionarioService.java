@@ -7,6 +7,7 @@ import com.healthcare.babysoft.repositories.FuncionarioRepository;
 import com.healthcare.babysoft.services.exceptions.ResourceConflictPersistence;
 import com.healthcare.babysoft.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,10 @@ public class FuncionarioService {
         Optional<FuncionarioModel> funcionarioModelOptional = funcionarioRepository.findByCpf(funcionarioDTO.getCpf());
         if(funcionarioModelOptional.isPresent()) {
             throw new ResourceConflictPersistence("Funcionário com o CPF informado já cadastrado no sistema");
+        }
+        funcionarioModelOptional = funcionarioRepository.findByEmail(funcionarioDTO.getEmail());
+        if(funcionarioModelOptional.isPresent()) {
+            throw new ResourceConflictPersistence("E-mail em uso.");
         }
         FuncionarioModel funcionarioModel = new FuncionarioModel();
         funcionarioModel.setCpf(funcionarioDTO.getCpf());

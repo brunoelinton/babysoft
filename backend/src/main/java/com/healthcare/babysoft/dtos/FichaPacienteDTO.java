@@ -15,6 +15,11 @@ public class FichaPacienteDTO implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
+    @NotBlank
+    String cpfPaciente;
+
+    @NotBlank
+    String nomePaciente;
     @NotNull
     private TipoSanguineo tipoSanguineo;
     @NotNull
@@ -44,6 +49,8 @@ public class FichaPacienteDTO implements Serializable {
     }
 
     public FichaPacienteDTO(FichaPacienteModel fichaPacienteModel) {
+        cpfPaciente = fichaPacienteModel.getMae().getCpf();
+        nomePaciente = fichaPacienteModel.getMae().getNome();
         tipoSanguineo = fichaPacienteModel.getTipoSanguineo();
         soroPositivo = fichaPacienteModel.getSoroPositivo();
         hipertensao = fichaPacienteModel.getHipertensao();
@@ -51,6 +58,22 @@ public class FichaPacienteDTO implements Serializable {
         medicacaoControlada = fichaPacienteModel.getMedicacaoControlada();
         peso = fichaPacienteModel.getPeso();
         altura = fichaPacienteModel.getAltura();
+    }
+
+    public String getCpfPaciente() {
+        return cpfPaciente;
+    }
+
+    public void setCpfPaciente(String cpfPaciente) {
+        this.cpfPaciente = cpfPaciente;
+    }
+
+    public String getNomePaciente() {
+        return nomePaciente;
+    }
+
+    public void setNomePaciente(String nomePaciente) {
+        this.nomePaciente = nomePaciente;
     }
 
     public TipoSanguineo getTipoSanguineo() {

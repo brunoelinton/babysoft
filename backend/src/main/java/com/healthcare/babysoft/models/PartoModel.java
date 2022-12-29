@@ -19,7 +19,7 @@ public class PartoModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long partoId;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumns({
             @JoinColumn(name = "data_parto"),
             @JoinColumn(name = "cpf_mae")
@@ -27,7 +27,7 @@ public class PartoModel implements Serializable {
     // @Column(unique = true)
     private RecemNascidoModel recemNascido;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "equipe_parto_id")
     private EquipePartoModel equipeParto;
 /*----------------------------------------------------

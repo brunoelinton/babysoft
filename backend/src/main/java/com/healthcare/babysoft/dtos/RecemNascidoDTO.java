@@ -2,6 +2,7 @@ package com.healthcare.babysoft.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.healthcare.babysoft.enums.Condicao;
 import com.healthcare.babysoft.models.MaeModel;
 import com.healthcare.babysoft.models.RecemNascidoModel;
@@ -22,6 +23,7 @@ public class RecemNascidoDTO implements Serializable {
     private String recemNascidoId;
     @NotBlank
     private String nome;
+
     private String cpfPai;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     @NotNull
