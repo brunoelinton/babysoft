@@ -4,7 +4,9 @@ import com.healthcare.babysoft.enums.Status;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "TB_FUNCIONARIO")
@@ -20,6 +22,12 @@ public class FuncionarioModel implements Serializable {
     private String senha;
     @Enumerated(EnumType.STRING)
     private Status status;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "TB_FUNCIONARIO_PERFIL",
+    joinColumns = @JoinColumn(name = "cpf_funcionario"),
+    inverseJoinColumns = @JoinColumn(name = "perfil_id"))
+    private Set<Perfil> perfis = new HashSet<>();
 
     public FuncionarioModel() {}
 
@@ -69,6 +77,10 @@ public class FuncionarioModel implements Serializable {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public Set<Perfil> getPerfis() {
+        return perfis;
     }
 
     @Override

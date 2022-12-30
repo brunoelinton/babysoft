@@ -7,6 +7,8 @@ import com.healthcare.babysoft.models.FuncionarioModel;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 public class FuncionarioDTO implements Serializable {
     @Serial
@@ -18,6 +20,8 @@ public class FuncionarioDTO implements Serializable {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String senha;
     private Status status;
+
+    private Set<PerfilDTO> perfis = new HashSet<>();
 
     public FuncionarioDTO() {}
 
@@ -35,6 +39,7 @@ public class FuncionarioDTO implements Serializable {
         email = funcionarioModel.getEmail();
         // senha = funcionarioModel.getSenha();
         status = funcionarioModel.getStatus();
+        funcionarioModel.getPerfis().forEach(perfil -> this.perfis.add(new PerfilDTO(perfil)));
     }
 
     public String getCpf() {
@@ -75,5 +80,8 @@ public class FuncionarioDTO implements Serializable {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+    public Set<PerfilDTO> getPerfis() {
+        return perfis;
     }
 }

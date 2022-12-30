@@ -1,15 +1,19 @@
 package com.healthcare.babysoft.services;
 
 import com.healthcare.babysoft.dtos.FuncionarioDTO;
+import com.healthcare.babysoft.dtos.PerfilDTO;
 import com.healthcare.babysoft.enums.Status;
 import com.healthcare.babysoft.models.FuncionarioModel;
+import com.healthcare.babysoft.models.Perfil;
 import com.healthcare.babysoft.repositories.FuncionarioRepository;
+import com.healthcare.babysoft.repositories.PerfilRepository;
 import com.healthcare.babysoft.services.exceptions.ResourceConflictPersistence;
 import com.healthcare.babysoft.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +24,12 @@ public class FuncionarioService {
 
     @Autowired
     private FuncionarioRepository funcionarioRepository;
+
+    @Autowired
+    private PerfilRepository perfilRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Transactional(readOnly = true)
     public Page<FuncionarioDTO> buscarTodosFuncionarios(Pageable pageable) {
@@ -48,8 +58,14 @@ public class FuncionarioService {
         funcionarioModel.setCpf(funcionarioDTO.getCpf());
         funcionarioModel.setNome(funcionarioDTO.getNome());
         funcionarioModel.setEmail(funcionarioDTO.getEmail());
-        funcionarioModel.setSenha(funcionarioDTO.getSenha());
+        funcionarioModel.setSenha(passwordEncoder.encode(funcionarioDTO.getSenha()));
         funcionarioModel.setStatus(Status.ATIVO);
+
+        funcionarioModel.getPerfis().clear();
+        for(PerfilDTO perfilDTO: funcionarioDTO.getPerfis()) {
+            Perfil perfil = perfilRepository.getReferenceById(perfilDTO.getId());
+            funcionarioModel.getPerfis().add(perfil);
+        }
         return new FuncionarioDTO(funcionarioRepository.save(funcionarioModel));
     }
 }

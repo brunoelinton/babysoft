@@ -8,16 +8,36 @@ INSERT INTO tb_especialidade (nome) VALUES ('Obstetra');
 INSERT INTO tb_especialidade (nome) VALUES ('Anestesista');
 INSERT INTO tb_especialidade (nome) VALUES ('Pediatra');
 
-INSERT INTO tb_funcionario (cpf, nome, email, senha, status) VALUES ('12345678901', 'Bruno Guimarães', 'bruno@gmail.com', '123456', 'ATIVO');
-INSERT INTO tb_funcionario (cpf, nome, email, senha, status) VALUES ('23456789012', 'João Silva', 'joao@gmail.com', '123456', 'ATIVO');
-INSERT INTO tb_funcionario (cpf, nome, email, senha, status) VALUES ('34567890123', 'Maria Souza', 'maria@gmail.com', '123456', 'ATIVO');
-INSERT INTO tb_funcionario (cpf, nome, email, senha, status) VALUES ('45678901231', 'Fernanda Cruz', 'fernanda@gmail.com', '123456', 'ATIVO');
+INSERT INTO tb_funcionario (cpf, nome, email, senha, status) VALUES ('12345678901', 'Bruno Guimarães', 'bruno@gmail.com', '$2a$10$hwNOMuZtGLTdSIo9yimcvenZdPpei6wemQhS2hYt3eYjr1jo6BWPW', 'ATIVO');
+INSERT INTO tb_funcionario (cpf, nome, email, senha, status) VALUES ('23456789012', 'João Silva', 'joao@gmail.com', '$2a$10$hwNOMuZtGLTdSIo9yimcvenZdPpei6wemQhS2hYt3eYjr1jo6BWPW', 'ATIVO');
+INSERT INTO tb_funcionario (cpf, nome, email, senha, status) VALUES ('34567890123', 'Maria Souza', 'maria@gmail.com', '$2a$10$hwNOMuZtGLTdSIo9yimcvenZdPpei6wemQhS2hYt3eYjr1jo6BWPW', 'ATIVO');
+INSERT INTO tb_funcionario (cpf, nome, email, senha, status) VALUES ('45678901231', 'Fernanda Cruz', 'fernanda@gmail.com', '$2a$10$hwNOMuZtGLTdSIo9yimcvenZdPpei6wemQhS2hYt3eYjr1jo6BWPW', 'ATIVO');
+INSERT INTO tb_funcionario (cpf, nome, email, senha, status) VALUES ('78901234567', 'Roberta Santos', 'roberta@gmail.com', '$2a$10$hwNOMuZtGLTdSIo9yimcvenZdPpei6wemQhS2hYt3eYjr1jo6BWPW', 'ATIVO');
+INSERT INTO tb_funcionario (cpf, nome, email, senha, status) VALUES ('89012345678', 'Gabriel Fonseca', 'gabriel@gmail.com', '$2a$10$hwNOMuZtGLTdSIo9yimcvenZdPpei6wemQhS2hYt3eYjr1jo6BWPW', 'ATIVO');
 
 INSERT INTO tb_medico(cpf_funcionario, crm, especialidade_id) VALUES ('12345678901', 'BA123456', 1);
 INSERT INTO tb_medico(cpf_funcionario, crm, especialidade_id) VALUES ('45678901231', 'BA234568', 3);
 
 INSERT INTO tb_enfermeiro(cpf_funcionario, inscricao_coren) VALUES ('23456789012', 'BA123456T1');
 INSERT INTO tb_enfermeiro(cpf_funcionario, inscricao_coren) VALUES ('34567890123', 'BA123456T3');
+
+INSERT INTO tb_perfil(autoridade) VALUES ('ROLE_NIVEL_1');
+INSERT INTO tb_perfil(autoridade) VALUES ('ROLE_NIVEL_2');
+INSERT INTO tb_perfil(autoridade) VALUES ('ROLE_NIVEL_3');
+
+
+INSERT INTO tb_funcionario_perfil(cpf_funcionario, perfil_id) VALUES ('12345678901', 2);
+INSERT INTO tb_funcionario_perfil(cpf_funcionario, perfil_id) VALUES ('12345678901', 3);
+INSERT INTO tb_funcionario_perfil(cpf_funcionario, perfil_id) VALUES ('45678901231', 2);
+INSERT INTO tb_funcionario_perfil(cpf_funcionario, perfil_id) VALUES ('45678901231', 3);
+INSERT INTO tb_funcionario_perfil(cpf_funcionario, perfil_id) VALUES ('23456789012', 2);
+INSERT INTO tb_funcionario_perfil(cpf_funcionario, perfil_id) VALUES ('23456789012', 3);
+INSERT INTO tb_funcionario_perfil(cpf_funcionario, perfil_id) VALUES ('34567890123', 2);
+INSERT INTO tb_funcionario_perfil(cpf_funcionario, perfil_id) VALUES ('34567890123', 3);
+INSERT INTO tb_funcionario_perfil(cpf_funcionario, perfil_id) VALUES ('78901234567', 3);
+INSERT INTO tb_funcionario_perfil(cpf_funcionario, perfil_id) VALUES ('89012345678', 3);
+
+
 
 INSERT INTO tb_equipe_parto(doula) VALUES ('SIM');
 
