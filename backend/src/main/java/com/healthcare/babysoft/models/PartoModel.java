@@ -19,7 +19,7 @@ public class PartoModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long partoId;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumns({
             @JoinColumn(name = "data_parto"),
             @JoinColumn(name = "cpf_mae")

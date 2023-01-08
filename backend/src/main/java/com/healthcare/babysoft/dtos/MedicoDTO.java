@@ -3,16 +3,19 @@ package com.healthcare.babysoft.dtos;
 import com.healthcare.babysoft.enums.Status;
 import com.healthcare.babysoft.models.FuncionarioModel;
 import com.healthcare.babysoft.models.MedicoModel;
+import com.healthcare.babysoft.services.validation.MedicoInsertValid;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.io.Serial;
 
+@MedicoInsertValid
 public class MedicoDTO extends FuncionarioDTO {
-    @NotBlank
+    @NotBlank(message = "Campo obrigatório.")
     private String crm;
 
-    @NotBlank
+    @NotBlank(message = "Campo obrigatório.")
     private String especialidade;
 
     public MedicoDTO() {}

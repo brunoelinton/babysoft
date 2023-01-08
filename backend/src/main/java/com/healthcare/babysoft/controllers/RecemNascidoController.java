@@ -2,7 +2,7 @@ package com.healthcare.babysoft.controllers;
 
 import com.healthcare.babysoft.dtos.RecemNascidoDTO;
 import com.healthcare.babysoft.services.RecemNascidoService;
-import lombok.SneakyThrows;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,7 +15,7 @@ import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
-@RequestMapping("/recemNascidos")
+@RequestMapping("/recemnascidos")
 public class RecemNascidoController {
 
     @Autowired
@@ -27,7 +27,6 @@ public class RecemNascidoController {
         return ResponseEntity.status(HttpStatus.OK).body(lista);
     }
 
-    @SneakyThrows
     @GetMapping("/{recemNascidoId}")
     public ResponseEntity<RecemNascidoDTO> buscarUmRecemNascido(@PathVariable String recemNascidoId) {
         RecemNascidoDTO recemNascidoDTO = recemNascidoService.buscarUmRecemNascido(recemNascidoId);

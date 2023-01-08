@@ -1,5 +1,6 @@
 package com.healthcare.babysoft.models;
 
+import com.healthcare.babysoft.dtos.EquipeMedicaDTO;
 import com.healthcare.babysoft.models.pk.EquipeMedicaPK;
 
 import javax.persistence.*;

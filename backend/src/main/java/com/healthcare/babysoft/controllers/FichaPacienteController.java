@@ -41,7 +41,7 @@ public class FichaPacienteController {
     }
 
     @PostMapping
-    public ResponseEntity<FichaPacienteDTO> preencherFichaPaciente(@PathVariable String cpfPaciente, @RequestBody FichaPacienteDTO fichaPacienteDTO) {
+    public ResponseEntity<FichaPacienteDTO> preencherFichaPaciente(@PathVariable String cpfPaciente, @Valid @RequestBody FichaPacienteDTO fichaPacienteDTO) {
         FichaPacienteDTO novaFichaPacienteDTO = fichaPacienteService.preencherFichaPaciente(cpfPaciente, fichaPacienteDTO);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("")
                 .buildAndExpand().toUri();

@@ -41,7 +41,7 @@ public class EquipePartoDTO implements Serializable {
             equipeMedica.add(new EquipeMedicaDTO(em));
         }
 
-        for(EquipeEnfermagemModel ef: equipeParto.getEquipeEnfermagemModel()) {
+        for(EquipeEnfermagemModel ef: equipeParto.getEquipeEnfermagem()) {
             equipeEnfermagem.add(new EquipeEnfermagemDTO(ef));
         }
     }

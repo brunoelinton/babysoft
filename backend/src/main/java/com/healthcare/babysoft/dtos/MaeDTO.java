@@ -2,22 +2,26 @@ package com.healthcare.babysoft.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.healthcare.babysoft.models.MaeModel;
+import com.healthcare.babysoft.services.validation.MaeInsertValid;
+import com.healthcare.babysoft.services.validation.MedicoInsertValid;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+@MaeInsertValid
 public class MaeDTO implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    @NotBlank(message = "Campo obrigatório")
     private String cpf;
     @NotBlank(message = "Campo obrigatório")
     private String nome;
     @NotNull(message = "Campo obrigatório")
+    @PastOrPresent(message = "A data não pode ser futura.")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private LocalDate dataNascimento;
     @NotBlank(message = "Campo obrigatório")
@@ -28,7 +32,7 @@ public class MaeDTO implements Serializable {
     private Integer numero;
     @NotBlank(message = "Campo obrigatório")
     private String bairro;
-    @NotBlank
+    @NotBlank(message = "Campo obrigatório")
     private String uf;
     @NotBlank(message = "Campo obrigatório")
     private String cep;

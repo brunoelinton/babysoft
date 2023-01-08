@@ -69,10 +69,10 @@ public class RecemNascidoService {
         var recemNascido = new RecemNascidoModel();
         copiarDTOParaEntidade(recemNascidoDTO, recemNascido);
         recemNascido.setMaeModel(maeModel);
-        Optional<RecemNascidoModel> objRecemNascido = recemNascidoRepository.findByRecemNascidoId(recemNascido.getRecemNascidoId());
-        if(objRecemNascido.isPresent()) {
-            throw new ResourceConflictPersistence("Recém-nascido já cadastrado no sistema.");
-        }
+//        Optional<RecemNascidoModel> objRecemNascido = recemNascidoRepository.findByRecemNascidoId(recemNascido.getRecemNascidoId());
+//        if(objRecemNascido.isPresent()) {
+//            throw new ResourceConflictPersistence("Recém-nascido já cadastrado no sistema.");
+//        }
         recemNascido = recemNascidoRepository.save(recemNascido);
         return new RecemNascidoDTO(recemNascido);
     }
@@ -85,8 +85,7 @@ public class RecemNascidoService {
         recemNascidoModel.setAltura(recemNascidoDTO.getAltura());
         recemNascidoModel.setCondicao(recemNascidoDTO.getCondicao());
         recemNascidoModel.setCpfPai(recemNascidoDTO.getCpfPai());
-        recemNascidoModel.getRecemNascidoId().getMaeModel();
+        // recemNascidoModel.getRecemNascidoId().getMaeModel();
     }
 
 }
-

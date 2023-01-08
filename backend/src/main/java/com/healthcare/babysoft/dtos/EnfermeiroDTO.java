@@ -3,9 +3,11 @@ package com.healthcare.babysoft.dtos;
 import com.healthcare.babysoft.enums.Status;
 import com.healthcare.babysoft.models.EnfermeiroModel;
 import com.healthcare.babysoft.models.FuncionarioModel;
+import com.healthcare.babysoft.services.validation.EnfermeiroInsertValid;
 
 import javax.validation.constraints.NotBlank;
 
+@EnfermeiroInsertValid
 public class EnfermeiroDTO extends FuncionarioDTO{
 
     @NotBlank

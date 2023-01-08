@@ -3,7 +3,6 @@ package com.healthcare.babysoft.controllers.exceptions;
 import com.healthcare.babysoft.services.exceptions.DatabaseException;
 import com.healthcare.babysoft.services.exceptions.ResourceConflictPersistence;
 import com.healthcare.babysoft.services.exceptions.ResourceNotFoundException;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -84,17 +83,17 @@ public class ResourceExceptionHandler {
         return ResponseEntity.status(status).body(err);
     }
 
-    @ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity<StandardError> confictResource(DataIntegrityViolationException e, HttpServletRequest request) {
-        HttpStatus status = HttpStatus.CONFLICT;
-        StandardError err = new StandardError();
-        err.setTimestamp(Instant.now());
-        err.setStatus(status.value());
-        err.setError("Conflito de e-mail.");
-        err.setMessage(e.getMessage());
-        err.setPath(request.getRequestURI());
-        System.out.println(err.getPath());
-        return ResponseEntity.status(status).body(err);
-    }
+//    @ExceptionHandler(DataIntegrityViolationException.class)
+//    public ResponseEntity<StandardError> confictResource(DataIntegrityViolationException e, HttpServletRequest request) {
+//        HttpStatus status = HttpStatus.CONFLICT;
+//        StandardError err = new StandardError();
+//        err.setTimestamp(Instant.now());
+//        err.setStatus(status.value());
+//        err.setError("Conflito de e-mail.");
+//        err.setMessage(e.getMessage());
+//        err.setPath(request.getRequestURI());
+//        System.out.println(err.getPath());
+//        return ResponseEntity.status(status).body(err);
+//    }
 }
 

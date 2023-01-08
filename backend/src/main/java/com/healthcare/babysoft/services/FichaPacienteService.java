@@ -29,14 +29,14 @@ public class FichaPacienteService {
 
     @Transactional
     public FichaPacienteDTO preencherFichaPaciente(String cpfPaciente, FichaPacienteDTO fichaPacienteDTO) {
-        Optional<FichaPacienteModel> fichaPacienteModelOptional = fichaPacienteRepository.findByCpf(cpfPaciente);
-
-        if (fichaPacienteModelOptional.isPresent()) {
-            throw new ResourceConflictPersistence("Ficha com CPF informado já presente no sistema.");
-        }
-
+//        Optional<FichaPacienteModel> fichaPacienteModelOptional = fichaPacienteRepository.findByCpf(cpfPaciente);
+//
+//        if (fichaPacienteModelOptional.isPresent()) {
+//            throw new ResourceConflictPersistence("Ficha com CPF informado já presente no sistema.");
+//        }
+//
         Optional<MaeModel> obj = maeRepository.findByCpf(cpfPaciente);
-        MaeModel maeModel = obj.orElseThrow(() -> new ResourceNotFoundException("Não há mãe com esse CPF"));
+        MaeModel maeModel = obj.get();
 
         return new FichaPacienteDTO(maeModel.preencherFichaPaciente(fichaPacienteDTO));
 //        FichaPacienteModel fichaPacienteModel = new FichaPacienteModel();

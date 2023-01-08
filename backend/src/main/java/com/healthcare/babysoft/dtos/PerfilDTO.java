@@ -2,6 +2,7 @@ package com.healthcare.babysoft.dtos;
 
 import com.healthcare.babysoft.models.Perfil;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serial;
 import java.io.Serializable;
 
@@ -10,6 +11,7 @@ public class PerfilDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
+    @NotBlank(message = "Campo obrigatório.")
     private String autoridade;
 
     public PerfilDTO() {}

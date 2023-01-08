@@ -1,16 +1,18 @@
 package com.healthcare.babysoft.dtos;
 
 import com.healthcare.babysoft.models.EspecialidadeModel;
+import com.healthcare.babysoft.services.validation.EspecialidadeInsertValid;
 
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
+@EspecialidadeInsertValid
 public class EspecialidadeDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Integer especialidadeId;
 
-    @NotBlank
+    @NotBlank(message = "Campo obrigatório.")
     private String especialidadeNome;
 
     public EspecialidadeDTO() {}

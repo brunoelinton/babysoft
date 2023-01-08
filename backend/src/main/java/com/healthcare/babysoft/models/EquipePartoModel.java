@@ -60,7 +60,7 @@ public class EquipePartoModel implements Serializable {
         return partos;
     }
 
-    public Set<EquipeEnfermagemModel> getEquipeEnfermagemModel() {
+    public Set<EquipeEnfermagemModel> getEquipeEnfermagem() {
         return equipeEnfermagemModel;
     }
 

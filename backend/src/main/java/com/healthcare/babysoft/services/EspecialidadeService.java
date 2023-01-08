@@ -34,9 +34,9 @@ public class EspecialidadeService {
 
     @Transactional
     public EspecialidadeDTO cadastrarEspecialidade(EspecialidadeDTO especialidadeDTO) {
-        Optional<EspecialidadeModel> obj = especialidadeRepository.findByNome(especialidadeDTO.getEspecialidadeNome());
-
-        if(obj.isPresent()) throw new ResourceConflictPersistence("Especialidade já cadastrada no sistema.");
+//        Optional<EspecialidadeModel> obj = especialidadeRepository.findByNome(especialidadeDTO.getEspecialidadeNome());
+//
+//        if(obj.isPresent()) throw new ResourceConflictPersistence("Especialidade já cadastrada no sistema.");
 
         EspecialidadeModel especialidadeModel = new EspecialidadeModel();
         especialidadeModel.setNome(especialidadeDTO.getEspecialidadeNome());

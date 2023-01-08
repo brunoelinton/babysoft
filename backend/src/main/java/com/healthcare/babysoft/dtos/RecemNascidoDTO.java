@@ -6,41 +6,46 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.healthcare.babysoft.enums.Condicao;
 import com.healthcare.babysoft.models.MaeModel;
 import com.healthcare.babysoft.models.RecemNascidoModel;
+import com.healthcare.babysoft.services.validation.RecemNascidoInsertValid;
 import com.healthcare.babysoft.utils.FactoryId;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 
 import java.io.Serial;
 import java.io.Serializable;
 
 import java.time.LocalDateTime;
 
+@RecemNascidoInsertValid
 public class RecemNascidoDTO implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
     private String recemNascidoId;
-    @NotBlank
+    @NotBlank(message = "Campo obrigatório.")
     private String nome;
 
     private String cpfPai;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
-    @NotNull
+    @NotNull(message = "Campo obrigatório.")
+    @PastOrPresent(message = "A data deve ser passada ou presente")
     private LocalDateTime dataNascimento;
 
-    @NotNull
+    @NotNull(message = "Campo obrigatório.")
     private Character sexo;
-    @NotNull
+    @NotNull(message = "Campo obrigatório.")
     private Double peso;
-    @NotNull
+    @NotNull(message = "Campo obrigatório.")
     private Double altura;
-    @NotNull
+    @NotNull(message = "Campo obrigatório.")
     private Condicao condicao;
 
-    @NotBlank
+//    @NotBlank(message = "Campo obrigatório.")
     private String cpfMae;
 
+//    @NotBlank(message = "Campo obrigatório")
     private String nomeMae;
 
     public RecemNascidoDTO() {}

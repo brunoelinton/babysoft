@@ -1,13 +1,16 @@
 package com.healthcare.babysoft.services;
 
 import com.healthcare.babysoft.dtos.MedicoDTO;
+import com.healthcare.babysoft.dtos.PerfilDTO;
 import com.healthcare.babysoft.enums.Status;
 import com.healthcare.babysoft.models.EspecialidadeModel;
 import com.healthcare.babysoft.models.FuncionarioModel;
 import com.healthcare.babysoft.models.MedicoModel;
+import com.healthcare.babysoft.models.Perfil;
 import com.healthcare.babysoft.repositories.EspecialidadeRepository;
 import com.healthcare.babysoft.repositories.FuncionarioRepository;
 import com.healthcare.babysoft.repositories.MedicoRepository;
+import com.healthcare.babysoft.repositories.PerfilRepository;
 import com.healthcare.babysoft.services.exceptions.ResourceConflictPersistence;
 import com.healthcare.babysoft.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +32,9 @@ public class MedicoService {
 
     @Autowired
     private EspecialidadeRepository especialidadeRepository;
+
+    @Autowired
+    private PerfilRepository perfilRepository;
 
     @Transactional(readOnly = true)
     public Page<MedicoDTO> buscarTodosMedicos(Pageable pageable) {
@@ -64,10 +70,16 @@ public class MedicoService {
         medicoModel.setCpf(medicoDTO.getCpf());
         medicoModel.setNome(medicoDTO.getNome());
         medicoModel.setEmail(medicoDTO.getEmail());
-        medicoModel.setSenha(medicoDTO.getSenha());
+        medicoModel.setPassword(medicoDTO.getPassword());
         medicoModel.setStatus(Status.ATIVO);
         medicoModel.setCrm(medicoDTO.getCrm());
         medicoModel.setEspecialidade(especialidadeModel);
+
+        medicoModel.getPerfis().clear();
+        for(PerfilDTO perfilDTO: medicoDTO.getPerfis()) {
+            Perfil perfil = perfilRepository.getReferenceById(perfilDTO.getId());
+            medicoModel.getPerfis().add(perfil);
+        }
         return new MedicoDTO(medicoRepository.save(medicoModel));
     }
 }

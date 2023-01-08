@@ -4,32 +4,42 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.healthcare.babysoft.enums.Status;
 import com.healthcare.babysoft.models.FuncionarioModel;
+import com.healthcare.babysoft.services.validation.FuncionarioInsertValid;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+@FuncionarioInsertValid
 public class FuncionarioDTO implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
     private String cpf;
+    @NotBlank(message = "Campo obrigatório.")
     private String nome;
+    @NotBlank(message = "Campo obrigatório.")
+    @Email(message = "Informe um e-mail válido.")
     private String email;
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String senha;
+    @NotBlank(message = "Campo obrigatório.")
+    private String password;
     private Status status;
 
+    @NotNull(message = "Campo obrigatório.")
     private Set<PerfilDTO> perfis = new HashSet<>();
 
     public FuncionarioDTO() {}
 
-    public FuncionarioDTO(String cpf, String nome, String email, String senha, Status status) {
+    public FuncionarioDTO(String cpf, String nome, String email, String password, Status status) {
         this.cpf = cpf;
         this.nome = nome;
         this.email = email;
-        this.senha = senha;
+        this.password = password;
         this.status = status;
     }
 
@@ -66,12 +76,12 @@ public class FuncionarioDTO implements Serializable {
         this.email = email;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getPassword() {
+        return password;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Status getStatus() {

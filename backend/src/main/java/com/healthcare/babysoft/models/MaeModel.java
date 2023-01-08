@@ -40,7 +40,7 @@ public class MaeModel implements Serializable {
     @OneToOne(mappedBy = "mae", cascade = CascadeType.ALL)
     private FichaPacienteModel fichaPacienteModel;
 
-    @OneToMany(mappedBy = "recemNascidoId.mae", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "recemNascidoId.mae", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<RecemNascidoModel> recemNascidos;
 
     public MaeModel() {

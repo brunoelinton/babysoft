@@ -3,6 +3,7 @@ package com.healthcare.babysoft.dtos;
 import com.healthcare.babysoft.enums.*;
 import com.healthcare.babysoft.models.FichaPacienteModel;
 import com.healthcare.babysoft.models.MaeModel;
+import com.healthcare.babysoft.services.validation.FichaPacienteInsertValid;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -11,28 +12,28 @@ import javax.validation.constraints.NotNull;
 import java.io.Serial;
 import java.io.Serializable;
 
+@FichaPacienteInsertValid
 public class FichaPacienteDTO implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    @NotBlank
     String cpfPaciente;
 
-    @NotBlank
+//    @NotBlank(message = "Campo obrigatório.")
     String nomePaciente;
-    @NotNull
+    @NotNull(message = "Campo obrigatório.")
     private TipoSanguineo tipoSanguineo;
-    @NotNull
+    @NotNull(message = "Campo obrigatório.")
     private SoroPositivo soroPositivo;
-    @NotNull
+    @NotNull(message = "Campo obrigatório.")
     private Hipertensao hipertensao;
-    @NotNull
+    @NotNull(message = "Campo obrigatório.")
     private Diabetes diabetes;
-    @NotNull
+    @NotNull(message = "Campo obrigatório.")
     private MedicacaoControlada medicacaoControlada;
-    @NotNull
+    @NotNull(message = "Campo obrigatório.")
     private Double peso;
-    @NotNull
+    @NotNull(message = "Campo obrigatório.")
     private Double altura;
 
     public FichaPacienteDTO() {

@@ -7,33 +7,37 @@ import com.healthcare.babysoft.enums.PartoRisco;
 import com.healthcare.babysoft.enums.TipoParto;
 import com.healthcare.babysoft.models.EquipePartoModel;
 import com.healthcare.babysoft.models.PartoModel;
+import com.healthcare.babysoft.services.validation.PartoInsertValid;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+@PartoInsertValid
 public class PartoDTO implements Serializable {
 
     private Long partoId;
-    @NotNull
+    @NotNull(message = "Campo obrigatório.")
+    @PastOrPresent(message = "A data deve ser passada ou presente.")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     private LocalDateTime dataParto;
 
-    @NotNull
+    @NotNull(message = "Campo obrigatório.")
     private MaeDTO mae;
-    @NotNull
+    @NotNull(message = "Campo obrigatório.")
     private RecemNascidoDTO recemNascido;
-    @NotNull
+    @NotNull(message = "Campo obrigatório.")
     private TipoParto tipoParto;
-    @NotNull
+    @NotNull(message = "Campo obrigatório.")
     private PartoRisco partoRisco;
-    @NotNull
+    @NotNull(message = "Campo obrigatório.")
     private Multifetal multifetal;
-    @NotBlank
+    @NotBlank(message = "Campo obrigatório.")
     private String observacao;
 
-    @NotNull
+    @NotNull(message = "Campo obrigatório.")
     private EquipePartoDTO equipeParto;
 
     public PartoDTO() {}
